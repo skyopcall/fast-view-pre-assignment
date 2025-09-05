@@ -87,4 +87,17 @@ class BbsController extends Controller
         $this->sendResult(200);
     }
 
+    // 게시글 삭제 (Soft Delete)
+    public function destroy($id)
+    {
+        $board = Board::find($id);
+        if (!$board) {
+            $this->setTestReturnData('board', $board);
+            return $this->sendErrorResult('게시글을 찾을 수 없습니다.', 404);
+        }
+
+        $board->delete(); // Soft Delete 적용
+        $this->sendResult(200, '게시글이 삭제되었습니다.');
+    }
+
 }
