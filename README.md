@@ -27,3 +27,9 @@ composer create-project laravel/laravel fastview "10.*"
 - MySQL 사용
 - .env 파일에서 DB 연결 설정
 
+---
+## DB migration
+```bash
+php artisan make:migration create_boards_table  // 게시판 테이블
+php artisan make:migration create_comment_table // 게시판의 코멘트 테이블
+```
