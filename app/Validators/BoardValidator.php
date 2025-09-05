@@ -19,4 +19,15 @@ class BoardValidator
             'createUser.required' => '작성자는 필수 항목입니다.',
         ]);
     }
+
+    public static function commentValidate(array $data)
+    {
+        return Validator::make($data, [
+            'author'      => 'required|string|max:255',
+            'content' => 'required|string',
+        ], [
+            'author.required'      => '작성자는 필수 항목입니다.',
+            'content.required' => '내용은 필수 항목입니다.',
+        ]);
+    }
 }

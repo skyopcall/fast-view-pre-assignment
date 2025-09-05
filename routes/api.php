@@ -30,6 +30,7 @@ Route::prefix('boards')->group(function () {
     // 코멘트
     Route::prefix('{boardId}/comments')->group(function () {
         Route::get('/', [CommentController::class, 'index']);
+        Route::post('/', [CommentController::class, 'store']);
     });
 
 });
