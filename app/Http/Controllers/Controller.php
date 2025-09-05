@@ -30,11 +30,11 @@ class Controller extends BaseController
         $this->testRtData[$key] = $data;
     }
 
-    public function sendResult(int $httpStatus=200){
+    public function sendResult(int $httpStatus=200, string $msg='ok'){
         $data = [
             'server' => $this->SERVER_VERSION,
             'success' => true,
-            'message' => 'ok',
+            'message' => $msg,
             'data' => $this->rtData,
         ];
 
