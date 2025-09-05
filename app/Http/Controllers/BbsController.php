@@ -35,7 +35,12 @@ class BbsController extends Controller
             return $this->sendErrorResult($validator->errors()->first(), 422);
         }
   
-        $board = Board::create($request->all());
+        $insertData = [
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'create_user' => $request->input('createUser'),
+        ];
+        $board = Board::create($insertData);
         if(!$board){
             return $this->sendErrorResult('게시글 등록에 실패하였습니다.', 500);
         }
