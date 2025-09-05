@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Board;
+use App\Validators\BoardValidator;
 
 class BbsController extends Controller
 {
@@ -22,6 +23,25 @@ class BbsController extends Controller
 
         $this->setReturnData('boardList', $boardLists);
         $this->sendResult();
+    }
+
+    // 게시글 생성
+    public function store(Request $request)
+    {
+        // request 유효성 검사
+        $validator = BoardValidator::validate($request->all());
+        
+        if ($validator->fails()) {
+            return $this->sendErrorResult($validator->errors()->first(), 422);
+        }
+  
+        $board = Board::create($request->all());
+        if(!$board){
+            return $this->sendErrorResult('게시글 등록에 실패하였습니다.', 500);
+        }
+
+        $this->setTestReturnData('boardInfo', $board);
+        $this->sendResult(201);
     }
 
 }
