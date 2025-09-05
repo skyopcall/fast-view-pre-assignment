@@ -14,22 +14,23 @@
 - Composer 설치 필요
 
 
-
-## Larvel 10 버전 설치
+## 세팅
+- Larvel 10 버전 설치
 
 ```bash
 composer create-project laravel/laravel fastview "10.*"
 ```
 
----
-## 데이터베이스
 
+- 데이터베이스
+```bash
 - MySQL 사용
 - .env 파일에서 DB 연결 설정
+```
 
----
-## DB migration
+- DB migration
 ```bash
 php artisan make:migration create_boards_table  // 게시판 테이블
 php artisan make:migration create_comment_table // 게시판의 코멘트 테이블
+php artisan migrate     // DB 생성
 ```
