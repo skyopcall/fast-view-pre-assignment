@@ -20,6 +20,7 @@ class Controller extends BaseController
     {
         $this->APP_ENV = config('app.env');
         $this->SERVER_VERSION['version'] = config('app.version');
+        $this->SERVER_VERSION['app_env'] = $this->APP_ENV;
     }
 
     public function setReturnData(string $key='emptyKey', $data){
