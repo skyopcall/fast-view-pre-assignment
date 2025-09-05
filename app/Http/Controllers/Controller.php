@@ -38,6 +38,7 @@ class Controller extends BaseController
             'data' => $this->rtData,
         ];
 
+        // 테스트 서버일때만 testData가 보이도록 추가
         if($this->APP_ENV === 'development'){
             $data['testData'] = $this->testRtData;
         }
@@ -53,6 +54,7 @@ class Controller extends BaseController
             'data' => $this->rtData,
         ];
 
+        // 테스트 서버일때만 testData가 보이도록 추가
         if($this->APP_ENV === 'development'){
             $data['testData'] = $this->testRtData;
         }
