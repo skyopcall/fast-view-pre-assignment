@@ -25,6 +25,18 @@ class BbsController extends Controller
         $this->sendResult();
     }
 
+     // 단일 게시글 조회
+    public function show($id)
+    {
+        $boardDetail = Board::find($id); // Soft Deleted 제외
+        if (!$boardDetail) {
+            return $this->sendErrorResult( '게시글을 찾을 수 없습니다.', 404);
+        }
+
+        $this->setTestReturnData('boardDetail', $boardDetail);
+        $this->sendResult(201);
+    }
+
     // 게시글 생성
     public function store(Request $request)
     {

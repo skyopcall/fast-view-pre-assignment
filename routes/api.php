@@ -24,4 +24,5 @@ Route::prefix('boards')->group(function () {
     Route::post('/', [BbsController::class, 'store']);        // 게시글 생성
     Route::put('/{id}', [BbsController::class, 'update']);    // 게시글 수정
     Route::delete('/{id}', [BbsController::class, 'destroy']);    // 게시글 삭제
+    Route::get('/{id}', [BbsController::class, 'show']);      // 단일 게시글 조회
 });
