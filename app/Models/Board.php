@@ -15,4 +15,9 @@ class Board extends Model
     public $timestamps = true; // 기본값 true
     const UPDATED_AT = null;   // updated_at 사용 안함
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

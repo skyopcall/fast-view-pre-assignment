@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BbsController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,11 @@ Route::prefix('boards')->group(function () {
     Route::put('/{id}', [BbsController::class, 'update']);    // 게시글 수정
     Route::delete('/{id}', [BbsController::class, 'destroy']);    // 게시글 삭제
     Route::get('/{id}', [BbsController::class, 'show']);      // 단일 게시글 조회
+
+    // 코멘트
+    Route::prefix('{boardId}/comments')->group(function () {
+        Route::get('/', [CommentController::class, 'index']);
+    });
+
 });
+
