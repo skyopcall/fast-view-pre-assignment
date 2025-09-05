@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Board extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ['title', 'content', 'create_user'];
 
-     // updated_at 자동 관리 비활성화
-    public $timestamps = false;
+    public $timestamps = true; // 기본값 true
+    const UPDATED_AT = null;   // updated_at 사용 안함
 
 }
