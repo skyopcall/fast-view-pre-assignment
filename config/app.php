@@ -26,10 +26,11 @@ return [
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
     | services the application utilizes. Set this in your ".env" file.
+    |  type = development, production
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +84,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'kr',
 
     /*
     |--------------------------------------------------------------------------
@@ -185,4 +186,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /**
+     * app version
+     */
+    'version' => env('APP_VERSION', '1.0.0'),
 ];
