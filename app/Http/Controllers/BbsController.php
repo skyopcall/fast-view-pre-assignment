@@ -44,4 +44,42 @@ class BbsController extends Controller
         $this->sendResult(201);
     }
 
+    // 게시글 수정
+    public function update(Request $request, $id)
+    {
+        $board = Board::find($id);
+        if (!$board) {
+            return $this->sendErrorResult('게시글을 찾을 수 없습니다.', 404);
+        }
+
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $createUser = $request->input('createUser');
+
+        // 값이 빈값이면 처리하지 update 하지 않음
+        if (
+                (is_null($title) || $board->title === $title) &&
+                (is_null($content) || $board->content === $content) &&
+                (is_null($createUser) || $board->create_user === $createUser) 
+        ) {
+            return $this->sendErrorResult('업데이트할 값이 없습니다', 400);
+        }
+        
+
+        $board->title = $title??$board->title;
+        $board->content = $content??$board->content;
+        $board->create_user = $createUser??$board->create_user;
+
+        try {
+            $board->save();
+        } catch (\Exception $e) {
+            $this->setTestReturnData('exception', $e->getMessage());
+            return $this->sendErrorResult('게시글 수정에 실패하였습니다.', 500);
+        }
+        
+
+        $this->setTestReturnData('boardInfo', $board);
+        $this->sendResult(200);
+    }
+
 }

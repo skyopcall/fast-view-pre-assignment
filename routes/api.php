@@ -22,4 +22,5 @@ use App\Http\Controllers\BbsController;
 Route::prefix('boards')->group(function () {
     Route::get('/', [BbsController::class, 'index']);         // 전체 게시글 조회
     Route::post('/', [BbsController::class, 'store']);        // 게시글 생성
+    Route::put('/{id}', [BbsController::class, 'update']);    // 게시글 수정
 });
