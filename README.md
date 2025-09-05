@@ -28,9 +28,32 @@ composer create-project laravel/laravel fastview "10.*"
 - .env 파일에서 DB 연결 설정
 ```
 
+- Controller
+```bash
+php artisan make:controller BbsController
+php artisan make:controller CommentController
+```
+
 - DB migration
 ```bash
 php artisan make:migration create_boards_table  // 게시판 테이블
 php artisan make:migration create_comment_table // 게시판의 코멘트 테이블
 php artisan migrate     // DB 생성
 ```
+---
+## 파일 Tree
+```bash
+📦app
+ ┣ 📂Exceptions
+ ┃ ┗ 📜Handler.php
+ ┣ 📂Http
+ ┃ ┣ 📂Controllers
+ ┃ ┃ ┣ 📜BbsController.php
+ ┃ ┃ ┣ 📜CommentController.php
+ ┃ ┃ ┗ 📜Controller.php
+ ┣ 📂Models
+ ┃ ┣ 📜Board.php
+ ┃ ┣ 📜Comment.php
+```
+
+
