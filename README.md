@@ -46,6 +46,16 @@ php artisan make:model Board
 php artisan make:model Comment
 ```
 
+- Seeder : 더미 데이터 생성
+```bash
+php artisan make:seeder BoardSeeder
+php artisan make:seeder CommentSeeder
+
+=== database/seeders/DatabaseSeeder.php 에 $this->call() 메서드에 배열로 시드 등록
+
+php artisan db:seed         // 전체 시드 샐행
+```
+
 - Databases
     - MySQL 사용
     - .env 파일에서 사용하고 있는 DB 정보로 변경
