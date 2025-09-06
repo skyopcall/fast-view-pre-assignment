@@ -77,7 +77,7 @@ class CommentController extends Controller
         }
 
         $this->setTestReturnData('comment', $comment);
-        return $this->sendResult();
+        return $this->sendResult(200, '수정되었습니다.');
     }
 
         // 댓글 삭제
