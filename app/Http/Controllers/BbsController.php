@@ -58,6 +58,7 @@ class BbsController extends Controller
         }
 
         $this->setTestReturnData('boardInfo', $board);
+        $this->setReturnData('board_id', $board->id);
         $this->sendResult(201);
     }
 
@@ -96,6 +97,7 @@ class BbsController extends Controller
         
 
         $this->setTestReturnData('boardInfo', $board);
+        $this->setReturnData('board_id', $board->id);
         $this->sendResult(200);
     }
 
