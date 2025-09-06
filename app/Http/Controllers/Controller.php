@@ -51,7 +51,7 @@ class Controller extends BaseController
         $data = [
             'success' => false,
             'server' => $this->SERVER_VERSION,
-            'msg' => $msg,
+            'message' => $msg,
             'data' => $this->rtData,
         ];
 
