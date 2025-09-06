@@ -43,7 +43,7 @@ class Controller extends BaseController
         if($this->APP_ENV === 'development'){
             $data['testData'] = $this->testRtData;
         }
-        echo json_encode($data);
+
         return response()->json($data, 200);
     }
 

@@ -31,6 +31,7 @@ Route::prefix('boards')->group(function () {
     Route::prefix('{boardId}/comments')->group(function () {
         Route::get('/', [CommentController::class, 'index']);
         Route::post('/', [CommentController::class, 'store']);
+        Route::put('/{id}', [CommentController::class, 'update']);
     });
 
 });

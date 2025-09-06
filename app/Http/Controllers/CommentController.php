@@ -60,4 +60,24 @@ class CommentController extends Controller
         $this->sendResult(201, "등록이 완료되었습니다.");
     }
 
+    // 댓글 수정
+    public function update(Request $request, $boardId, $id)
+    {
+        $comment = Comment::where('board_id', $boardId)->find($id);
+        if (!$comment) {
+            return $this->sendErrorResult( '댓글을 찾을 수 없습니다.', 404);
+        }
+
+        $comment->content = $request->input('content', $comment->content);
+        try {
+            $comment->save();
+        } catch (\Exception $e) {
+            $this->setTestReturnData('exception', $e->getMessage());
+            return $this->sendErrorResult('코맨트 등록에 실패하였습니다.', 500);
+        }
+
+        $this->setTestReturnData('comment', $comment);
+        return $this->sendResult();
+    }
+
 }
