@@ -44,7 +44,7 @@ class Controller extends BaseController
             $data['testData'] = $this->testRtData;
         }
 
-        return response()->json($data, 200);
+        return response()->json($data, $httpStatus);
     }
 
     public function sendErrorResult(string $msg, int $httpStatus=200){
