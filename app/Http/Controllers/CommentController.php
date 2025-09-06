@@ -80,4 +80,21 @@ class CommentController extends Controller
         return $this->sendResult();
     }
 
+        // 댓글 삭제
+    public function destroy($boardId, $id)
+    {
+        $comment = Comment::where('board_id', $boardId)->find($id);
+        if (!$comment) {
+             return $this->sendErrorResult( '댓글을 찾을 수 없습니다.', 404);
+        }
+
+        try {
+            $comment->delete();
+        } catch (\Exception $e) {
+            $this->setTestReturnData('exception', $e->getMessage());
+            return $this->sendErrorResult('코맨트 삭제에 실패하였습니다.', 500);
+        }
+        return $this->sendResult(200, '삭제되었습니다.');
+    }
+
 }

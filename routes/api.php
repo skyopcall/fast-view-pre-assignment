@@ -32,6 +32,7 @@ Route::prefix('boards')->group(function () {
         Route::get('/', [CommentController::class, 'index']);               // 코멘트 리스트
         Route::post('/', [CommentController::class, 'store']);              // 코멘트 등록
         Route::put('/{id}', [CommentController::class, 'update']);          // 코멘트 업데이트
+        Route::delete('/{id}', [CommentController::class, 'destroy']);      // 코맨트 삭제
     });
 
 });
