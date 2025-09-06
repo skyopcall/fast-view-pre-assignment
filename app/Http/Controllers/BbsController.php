@@ -22,7 +22,7 @@ class BbsController extends Controller
         // 만약 response 데이터 변형이 필요 할 시 추가 작업
 
         $this->setReturnData('boardList', $boardLists);
-        $this->sendResult();
+        return $this->sendResult();
     }
 
      // 단일 게시글 조회
@@ -34,7 +34,7 @@ class BbsController extends Controller
         }
 
         $this->setTestReturnData('boardDetail', $boardDetail);
-        $this->sendResult(201);
+        return $this->sendResult(201);
     }
 
     // 게시글 생성
@@ -59,7 +59,7 @@ class BbsController extends Controller
 
         $this->setTestReturnData('boardInfo', $board);
         $this->setReturnData('boardId', $board->id);
-        $this->sendResult(201);
+        return $this->sendResult(201);
     }
 
     // 게시글 수정
@@ -98,7 +98,7 @@ class BbsController extends Controller
 
         $this->setTestReturnData('boardInfo', $board);
         $this->setReturnData('boardId', $board->id);
-        $this->sendResult(200);
+        return $this->sendResult(200);
     }
 
     // 게시글 삭제 (Soft Delete)
@@ -111,7 +111,7 @@ class BbsController extends Controller
         }
 
         $board->delete(); // Soft Delete 적용
-        $this->sendResult(200, '게시글이 삭제되었습니다.');
+        return $this->sendResult(200, '게시글이 삭제되었습니다.');
     }
 
 }

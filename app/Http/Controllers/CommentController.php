@@ -27,7 +27,7 @@ class CommentController extends Controller
         $comments = $board->comments()->get();
         
         $this->setReturnData('comments', $comments);
-        $this->sendResult();
+        return $this->sendResult();
     }
 
     // 댓글 생성
@@ -59,7 +59,7 @@ class CommentController extends Controller
 
         $this->setReturnData('commentId', $comment->id);
         $this->setReturnData('boardId', $boardId);
-        $this->sendResult(201, "등록이 완료되었습니다.");
+        return $this->sendResult(201, "등록이 완료되었습니다.");
     }
 
     // 댓글 수정
