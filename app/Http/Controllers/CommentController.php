@@ -57,6 +57,8 @@ class CommentController extends Controller
             return $this->sendErrorResult('코맨트 등록에 실패하였습니다.', 500);
         }
 
+        $this->setReturnData('commentId', $comment->id);
+        $this->setReturnData('boardId', $boardId);
         $this->sendResult(201, "등록이 완료되었습니다.");
     }
 
@@ -77,6 +79,8 @@ class CommentController extends Controller
         }
 
         $this->setTestReturnData('comment', $comment);
+        $this->setReturnData('commentId', $comment->id);
+        $this->setReturnData('boardId', $boardId);
         return $this->sendResult(200, '수정되었습니다.');
     }
 
